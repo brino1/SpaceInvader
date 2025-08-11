@@ -35,7 +35,7 @@ for i in range(num_of_enemies):
     enemyX.append(random.randint(0, 736))
     enemyY.append(random.randint(50, 150))
     enemyX_change.append(4)
-    enemyY_change.append(10)
+    enemyY_change.append(40)
 
 shotImg = pygame.image.load('./asset/bullet.png')
 shotX = 0
