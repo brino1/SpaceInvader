@@ -11,6 +11,9 @@ screen = pygame.display.set_mode((800, 600))
 
 background = pygame.image.load('./asset/background.png')
 
+mixer.music.load('./asset/background.wav')
+mixer.music.play(-1)
+
 pygame.display.set_caption("Space Invader")
 icon = pygame.image.load('./asset/ufo.png')
 pygame.display.set_icon(icon)
@@ -87,6 +90,8 @@ while running:
             if event.key == pygame.K_RIGHT:
                 playerX_change = 5
             if event.key == pygame.K_SPACE:
+                shot_Sound = mixer.Sound('./asset/laser.wav')
+                shot_Sound.play()
                 if shot_state == "ready":
                     shotX = playerX
                     fire_shot(playerX, shotY)
@@ -113,6 +118,8 @@ while running:
 
         collision = isCollision(enemyX[i], enemyY[i], shotX, shotY)
         if collision:
+            explosion_Sound = mixer.Sound('./asset/explosion.wav')
+            explosion_Sound.play()
             shotY = 480
             shot_state = "ready"
             score_value += 1
